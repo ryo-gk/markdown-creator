@@ -22,13 +22,11 @@ export function commandCreate(options: CreateOptions) {
     content = replaceVariables(content, vars)
   }
 
-  const now = new Date().toLocaleString('sv').replace(/\D/g, '')
-  const outDir = out ? out + '/' : ''
-  const outFile = name ?? now
-  const outName = `${outDir}${outFile}.md`
-
-  execSync(`mkdir -p ${out}`)
-  writeFileSync(outName, content)
+  writeFile(
+    content,
+    getName(out, name ?? ''),
+    out
+  )
 }
 
 function replaceVariables(content: string, vars: string[]) {
@@ -38,4 +36,18 @@ function replaceVariables(content: string, vars: string[]) {
   }
 
   return content
+}
+
+function getName(out: string | undefined, name: string) {
+  const now = new Date().toLocaleString('sv').replace(/\D/g, '')
+  const outDir = out ? out + '/' : ''
+  const outFile = (name.endsWith('.md') ? name.replace(/\.md$/i, '') : name) ?? now
+  const outName = `${outDir}${outFile}.md`
+
+  return outName
+}
+
+function writeFile(content: string, name: string, out: string | undefined) {
+  execSync(`mkdir -p ${out}`)
+  writeFileSync(name, content)
 }

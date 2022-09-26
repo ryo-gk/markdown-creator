@@ -2,18 +2,23 @@
   "name": "markdown-creator",
   "version": "0.1.0",
   "description": "Create markdown file from command line.",
-  "main": "index.ts",
+  "main": "bin/index.js",
+  "repository": {
+    "url": "https://github.com/ryo-gk/markdown-creator.git",
+    "type": "git"
+  },
   "scripts": {
     "mdc": "node ./bin/index.js",
     "build": "tsc"
   },
-  "bin": "bin/index.js",
+  "bin": {
+    "mdc": "bin/index.js"
+  },
   "author": "ryo_gk",
   "license": "MIT",
   "dependencies": {
     "@types/node": "^18.7.18",
     "sade": "^1.8.1",
-    "typescript": "^4.8.3",
-    "vite-node": "^0.23.4"
+    "typescript": "^4.8.3"
   }
 }
