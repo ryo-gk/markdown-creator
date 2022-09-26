@@ -7,7 +7,7 @@ Create markdown file via command line.
 mdc create -t sample/template.md -n new-file -o sample --vars 2022-01-01,"John Doe"
 ```
 
-sample/template.md
+e.g.) sample/template.md
 ```md
 ---
 title: Post at {$1}
