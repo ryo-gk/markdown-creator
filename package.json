@@ -1,6 +1,6 @@
 {
   "name": "markdown-creator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create markdown file from command line.",
   "main": "bin/index.js",
   "repository": {
