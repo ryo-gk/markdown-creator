@@ -1,8 +1,8 @@
 {
   "name": "markdown-creator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create markdown file from command line.",
-  "main": "bin/index.js",
+  "main": "dist/node/index.js",
   "repository": {
     "url": "https://github.com/ryo-gk/markdown-creator.git",
     "type": "git"
