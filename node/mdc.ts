@@ -10,7 +10,7 @@ program.command('create')
   .option('-t, --template', 'Use specified file as template')
   .option('-n, --name', 'Use specified name as file\'s name')
   .option('-o, --out', 'Use specified path as directory where file create')
-  .option('--var', 'Use variables which are used for format')
+  .option('--vars', 'Use variables which are used for format')
   .action((opts) => {
     commandCreate(opts)
   })

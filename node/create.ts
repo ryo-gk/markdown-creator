@@ -16,7 +16,7 @@ export function commandCreate(options: CreateOptions) {
     template,
   } = options
   let content = template ? readFileSync(template, { encoding: 'utf-8' }) : TEMPLATE_EMPTY
-  const vars = options.vars?.split(',') ?? []
+  const vars = options.vars ? options.vars.split(',') : []
 
   if (template) {
     content = replaceVariables(content, vars)
