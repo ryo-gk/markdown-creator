@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { readFileSync, writeFileSync } from 'fs'
 import { execSync } from 'child_process'
 import { TEMPLATE_EMPTY } from './template'
@@ -7,6 +8,7 @@ export interface CreateOptions {
   out?: string
   template?: string
   vars?: string
+  today?: string
 }
 
 export function commandCreate(options: CreateOptions) {
@@ -14,12 +16,17 @@ export function commandCreate(options: CreateOptions) {
     name,
     out,
     template,
+    today
   } = options
   let content = template ? readFileSync(template, { encoding: 'utf-8' }) : TEMPLATE_EMPTY
-  const vars = options.vars ? options.vars.split(',') : []
+  const vars = options.vars ? String(options.vars).split(',') : []
 
   if (template) {
     content = replaceVariables(content, vars)
+  }
+
+  if (today) {
+    content = replaceToday(content, today)
   }
 
   writeFile(
@@ -34,6 +41,12 @@ function replaceVariables(content: string, vars: string[]) {
     const index = Number(key) + 1
     content = content.replace(new RegExp(`\\{\\$${index}\\}`, 'g'), vars[key])
   }
+
+  return content
+}
+
+function replaceToday(content: string, format: string) {
+  content = content.replaceAll('{$today}', dayjs().format(format))
 
   return content
 }
