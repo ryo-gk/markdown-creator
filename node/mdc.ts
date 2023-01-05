@@ -3,7 +3,7 @@ import { commandCreate } from './create'
 
 const program = sade('mdc')
 
-program.version('1.0.1')
+program.version('1.1.0')
 
 program.command('create')
   .describe('create markdown file')
