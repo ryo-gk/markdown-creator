@@ -11,7 +11,7 @@ program.command('create')
   .option('-n, --name', 'Use specified name as file\'s name')
   .option('-o, --out', 'Use specified path as directory where file create')
   .option('--vars', 'Use variables which are used for format')
-  .option('--today', 'Replace the characters {$today} to today\'s date using passed the day.js format')
+  .option('--today', 'Replace the characters {$today} with today\'s date using passed the day.js format')
   .action((opts) => {
     commandCreate(opts)
   })
